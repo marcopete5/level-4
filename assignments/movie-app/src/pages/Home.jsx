@@ -93,7 +93,7 @@ function Home() {
 
     return (
         <div>
-            <h2>{query ? 'Search Results' : 'Random Movies'}</h2>
+            <h2>{query ? 'Search Results' : 'Find Movie'}</h2>
             <form className="search-form" onSubmit={handleSearch}>
                 <input
                     type="text"
