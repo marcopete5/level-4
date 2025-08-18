@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Level 4 - Advanced React - Theme Context Assignment</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="assignment-header">
+            <header class="slide-header">
+                <h1 id="assignment-header">Changing Themes with Context</h1>
+                <h2>Assignment</h2>
+            </header>
+
+            <div class="section">
+                <p>
+                    Using what you have just learned about React Context, you
+                    are tasked with making a <code>ThemeProvider</code> context
+                    for a new application. Your goal is build a home page that
+                    offers a dark and a light theme. This theme can be toggled
+                    by the user.
+                </p>
+                <p>
+                    This will be excellent practice in linking up the Provider
+                    and Consumer parts of Context around your app (getting used
+                    to the syntax) while working on your CSS that corresponds
+                    with the different themes.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>You must:</h3>
+                <ul class="custom-list">
+                    <li>Provide a Dark and a Light theme</li>
+                    <li>
+                        Have at least 3 display components:
+                        <ul class="custom-list">
+                            <li>ex: Navbar, Footer, Main</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Create a <code>ThemeProvider</code> component that
+                        manages the themes using Context.
+                    </li>
+                    <li>
+                        Wrap your context provider around the whole app, like
+                        so:
+                    </li>
+                </ul>
+                <pre><code class="language-jsx">
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import {ThemeContextProvider} from "./themeContext"
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+	&lt;ThemeContextProvider&gt;
+	    &lt;App /&gt;
+	&lt;/ThemeContextProvider&gt;
+);
+            </code></pre>
+                <p>
+                    Below is an example, Light and Dark Mode are MVP or take it
+                    further and do Funky Mode!
+                </p>
+                <h3>
+                    <a
+                        href="https://marcopete5.github.io/level-4/assignments/context-theme/"
+                        target="_blank"
+                        >DEMO OF ASSIGNMENT</a
+                    >
+                </h3>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Take it further:</h3>
+                <ul class="custom-list">
+                    <li>
+                        Instead of a toggle, make it a option drop down menu
+                        with multiple themes provided.
+                    </li>
+                    <li>
+                        Have at least one of the themes change the physical
+                        layout of the website.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Task Rubric</h3>
+                <table class="rubric-table">
+                    <thead>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Level 1: Emerging</th>
+                            <th>Level 2: Developing</th>
+                            <th>Level 3: Proficient</th>
+                            <th>Level 4: Mastery</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>React Context</td>
+                            <td>
+                                Context Provider is not implemented correctly if
+                                at all. Components are not themed using
+                                <code>useContext()</code>
+                            </td>
+                            <td>
+                                Context Provider is implemented but theme
+                                switching doesn’t work.
+                            </td>
+                            <td>
+                                Context Provider is implemented correctly and
+                                <code>useContext()</code> is used in all
+                                components. Theme toggle button works with minor
+                                issues with organization and code quality
+                            </td>
+                            <td>
+                                Context Provider is implemented correctly and
+                                <code>useContext()</code> is used in all
+                                components. Bonus requirements are implemented
+                                well. Code is clean and organized
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Styling</td>
+                            <td>
+                                Little CSS is used and there is little
+                                distinction between light and dark mode
+                            </td>
+                            <td>
+                                Light mode and dark mode styling is inconsistent
+                                or affects readability
+                            </td>
+                            <td>
+                                Light mode and dark mode are clearly distinct
+                                with minor issues with readability or CSS
+                                organization
+                            </td>
+                            <td>
+                                CSS is organized well, and each theme mode is
+                                clearly distinct. Readability and naming is
+                                excellent.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
