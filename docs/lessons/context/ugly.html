@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Level 4 - Advanced React - Ugly Things Assignment</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="assignment-header">
+            <header class="slide-header">
+                <h1 id="assignment-header">Ugly Things Assignment</h1>
+                <h2>Level 4 - Advanced React</h2>
+            </header>
+
+            <div class="section">
+                <p>
+                    You are going to build an React app that allows a user to
+                    post things that they think are ugly. The data of ugly
+                    things should be managed by React Context. You will be using
+                    the
+                    <a
+                        href="https://coursework.vschool.io/ugly-things-api-documentation/"
+                        target="_blank"
+                        rel="noopener"
+                        >Ugly Things API</a
+                    >
+                    created by the wonderful yet calculated Bob.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Requirements</h3>
+                <ul class="custom-list">
+                    <li>
+                        Must have 3 input fields:
+                        <ul class="custom-list">
+                            <li>
+                                Img url field (A url to an image of an ugly
+                                thing)
+                            </li>
+                            <li>
+                                Title field (The title of the image that the
+                                user wants to give)
+                            </li>
+                            <li>
+                                Description field (why the user thinks it is
+                                ugly)
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Must have <em>Submit</em> button that submits the data
+                    </li>
+                    <li>
+                        Must display a list of posted images with their
+                        associated titles and descriptions
+                    </li>
+                    <li>
+                        Must store the array of ugly thing objects in the
+                        Context store
+                    </li>
+                    <li>Must be able to delete an ugly thing</li>
+                    <li>Must be able to edit an ugly thing</li>
+                    <li>
+                        Must make all requests via the
+                        <a
+                            href="https://coursework.vschool.io/ugly-things-api-documentation/"
+                            target="_blank"
+                            rel="noopener"
+                            >Ugly Things API</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Note</h3>
+                <p>
+                    Only the array of ugly things, and functions for
+                    manipulating it, needs to be managed in context
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Example Site</h3>
+                <img
+                    src="https://coursework.vschool.io/content/images/2015/05/ugly.png"
+                    alt="Ugly Things example site"
+                    class="lesson-image" />
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Optional</h3>
+                <ul class="custom-list">
+                    <li>Have 3 images horizontally on each row</li>
+                    <li>
+                        Allow each image to have one or more user-submitted
+                        comments
+                    </li>
+                    <li>Allow the ability to delete specific comments</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Approach</h3>
+                <p>
+                    This assignment is for practicing context. In the real
+                    world, if you wanted to build this, you probably would not
+                    use context. For that reason, it may feel a bit contrived.
+                </p>
+                <p>
+                    Think of your component tree. You need to have a form for
+                    submission, and a list of ugly things. These two components
+                    would probably be siblings. Usually, it would be easy enough
+                    to lift state to their parent, so that the form can add to
+                    an array of ugly things in the state of the parent, and the
+                    parent can pass that array down as props to a component to
+                    display that list. For this project, we'll have our context
+                    provider manage the state of our array.
+                </p>
+                <p>
+                    Context is tough, so be prepared to spend some time on this
+                    project.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Notes</h3>
+                <p>
+                    You can choose to implement this assignment using all hooks
+                    or with class components
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Task Rubric</h3>
+                <table class="rubric-table">
+                    <thead>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Level 1: Emerging</th>
+                            <th>Level 2: Developing</th>
+                            <th>Level 3: Proficient</th>
+                            <th>Level 4: Mastery</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>React Forms</td>
+                            <td>
+                                User is unable to type into fields or incorrect
+                                input types are used.
+                            </td>
+                            <td>
+                                Form inputs work but submitting form doesn’t
+                                capture all data or doesn’t send POST request
+                                correctly
+                            </td>
+                            <td>
+                                Form is able to submit correct data to the API.
+                                Minor issues with code organization and
+                                readability
+                            </td>
+                            <td>
+                                Form is able to submit correct info to the API.
+                                Code is readable and well organized.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Asynchronous State Management and React Context
+                            </td>
+                            <td>
+                                Context is not used correctly to store the list
+                                of items. API is not used for all CRUD methods
+                            </td>
+                            <td>
+                                Context is used but there are issues with how
+                                CRUD methods are implemented
+                            </td>
+                            <td>
+                                Context is used to implement all CRUD methods.
+                                API is used correctly with minor issues in
+                                readability and organization
+                            </td>
+                            <td>
+                                Context is used to implement all CRUD methods.
+                                API is used correctly. Code is organized and
+                                readable
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Styling</td>
+                            <td>
+                                Little CSS is used, styling is unprofessional
+                                and awkward.
+                            </td>
+                            <td>
+                                Styling is somewhat awkward and glitchy. Doesn’t
+                                follow the example.
+                            </td>
+                            <td>
+                                Styling matches the example for the most part,
+                                with some minor discrepancies. CSS has small
+                                organizational issues
+                            </td>
+                            <td>
+                                Styling is clean and polished, matching the
+                                example well. CSS is organized and DRY
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
