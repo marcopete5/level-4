@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Level 4 - Advanced React - Gradient Generator Assignment</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="assignment-header">
+            <header class="slide-header">
+                <h1 id="assignment-header">Gradient Generator Assignment</h1>
+                <h2>Level 4 - Advanced React</h2>
+            </header>
+
+            <div class="section">
+                <p>
+                    Develop a UI tool that lets users create a gradient and
+                    generates cross-browser CSS code of that gradient to be used
+                    in any application.
+                </p>
+                <p>
+                    <a
+                        href="https://marcopete5.github.io/level-4/assignments/gradient-generator"
+                        target="_blank"
+                        rel="noopener"
+                        >DEMO OF ASSIGNMENT</a
+                    >
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Requirements</h3>
+                <ol class="custom-list">
+                    <li>
+                        It must be able to accept 2 color inputs (or 3 if you
+                        prefer) and a number input to represent the angle
+                    </li>
+                    <li>
+                        Render a preview box that displays the current gradient
+                    </li>
+                    <li>
+                        Generate cross-browser CSS code in a text box as shown
+                        below. The user should be able to copy this code.
+                    </li>
+                </ol>
+                <pre><code class="language-css">
+background: linear-gradient(50deg, #FFFF00 , #000000); 
+-moz-background: linear-gradient(50deg, #FFFF00 , #000000); 
+-webkit: linear-gradient(50deg, #FFFF00 , #000000)
+
+/*for 3 color inputs, you can simply add the 3rd color*/
+background: linear-gradient(50deg, #FFFF00 , #000000, #FF0000); 
+            </code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Hints & Tips</h3>
+                <ol class="custom-list">
+                    <li>
+                        You’ll want to display the actual code in a box instead
+                        of just rendering the gradient. One such way is by using
+                        the <code>&lt;textarea&gt;</code> tag. It’s also a type
+                        of form element, so you’ll have to treat it like you
+                        would any controlled component in React like the
+                        <code>&lt;input&gt;</code> element. Refer to the
+                        <a
+                            href="https://reactjs.org/docs/forms.html#the-textarea-tag"
+                            target="_blank"
+                            rel="noopener"
+                            >docs</a
+                        >
+                        for more information.
+                    </li>
+                    <li>
+                        The textbox should be read only. The user should not be
+                        able to edit the code inside of it. If you’re using
+                        <code>&lt;textarea&gt;</code> to display the code, you
+                        can add a readOnly prop to it:
+                        <pre><code class="language-jsx">
+&lt;textarea readOnly value="Text area text goes here"/&gt;
+                    </code></pre>
+                    </li>
+                    <li>
+                        You can choose to either have a “Generate Code” button
+                        that outputs the code once the user selects their
+                        gradient, or omit the button and output code every time
+                        the input changes. To implement the latter, consider
+                        using <code>useEffect</code>
+                    </li>
+                </ol>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Extra Credit Challenge</h3>
+                <ol class="custom-list">
+                    <li>
+                        User can add or remove gradient colors (but there must
+                        be a minimum of 2 colors)
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </body>
+</html>
