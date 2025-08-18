@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Level 4 - Advanced React - Using React's Updated Render API
+        </title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Using React's Updated Render API</h1>
+                <h2>Updates and Projects</h2>
+            </header>
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>Use React’s updated render API</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <p>
+                    On 3/29/22
+                    <a
+                        href="https://reactjs.org/blog/2022/03/29/react-v18.html"
+                        target="_blank"
+                        rel="noopener"
+                        >React released version 18</a
+                    >. One of the most significant changes made is the way the
+                    app is rendered. Instead of using ReactDOM.render(), a new
+                    method called createRoot should be used. React v18 will ship
+                    with both the new API and legacy API, so if you continue
+                    using the following syntax when creating a react app (<code
+                        >create-react-app</code
+                    >
+                    will also use this by default):
+                </p>
+                <pre><code class="language-jsx">
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+            </code></pre>
+                <p>
+                    The above will work fine for now, but React will run v17
+                    instead of 18, and you will see this warning below:
+                </p>
+                <p>
+                    <pre><code>   Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. 
+    Until you switch to the new API, your app will behave as if it's running React 17. 
+    Learn more: https://reactjs.org/link/switch-to-createroot</code></pre>
+                </p>
+                <p>To get rid of this warning, use createRoot instead:</p>
+                <pre><code class="language-jsx">
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from 'App'
+
+const container = document.getEleementById('root')
+
+const root = ReactDOM.createRoot(container)
+
+root.render(&lt;App /&gt;)
+            </code></pre>
+            </div>
+        </div>
+    </body>
+</html>
