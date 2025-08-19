@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Level 4 - Advanced React - Using useNavigate in React Router DOM
+        </title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">
+                    Using useNavigate in React Router DOM
+                </h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <div class="section">
+                <iframe
+                    class="video-embed"
+                    src="https://www.youtube.com/embed/bgfG5umOwEc"
+                    title="Using useNavigate in React Router DOM"
+                    frameborder="0"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    aria-label="Video demonstrating the useNavigate hook in React Router DOM"></iframe>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        Implement the useNavigate hook and assess its use cases
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <p>
+                    In this lesson, we will explore the
+                    <code>useNavigate</code> hook provided by React Router DOM.
+                    This hook is essential for programmatically navigating
+                    between different routes in a React application. We will
+                    learn how to use <code>useNavigate</code> to navigate to a
+                    specific route and how to move backward or forward in the
+                    browser history.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Basic Usage of <code>useNavigate</code></h3>
+                <p>
+                    The <code>useNavigate</code> hook returns a function that
+                    can be used to navigate programmatically. This function
+                    allows you to change the route based on certain actions or
+                    logic in your application. For instance, you can navigate to
+                    a specific route when a user clicks a button, submits a
+                    form, or after a successful API call.
+                </p>
+                <ul class="custom-list">
+                    <li>
+                        <strong>Example:</strong> You might use
+                        <code>useNavigate</code> to navigate to an inventory
+                        item page when a user clicks on an item in a list. By
+                        calling the navigate function with the appropriate
+                        route, you can dynamically change the view based on user
+                        interaction.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Navigating Backward or Forward in History</h3>
+                <p>
+                    You can also use <code>useNavigate</code> to move backward
+                    or forward in the browser's history. This functionality is
+                    helpful for providing a more intuitive navigation
+                    experience, such as allowing users to go back to the
+                    previous page or move forward to a page they visited before.
+                </p>
+                <p><strong>Example Code:</strong></p>
+                <pre><code class="language-jsx">
+const navigate = useNavigate();
+
+function goBack() {
+    navigate(-1);  // Navigate back one page
+}
+
+function goForward() {
+    navigate(1);  // Navigate forward one page
+}
+            </code></pre>
+                <p><strong>Explanation:</strong></p>
+                <ul class="custom-list">
+                    <li>
+                        <strong>Navigating Back:</strong>
+                        <ul class="custom-list">
+                            <li>
+                                The <code>navigate(-1)</code> function call
+                                navigates one page back in the browser history.
+                            </li>
+                            <li>
+                                This is equivalent to the user clicking the
+                                browser's back button.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Navigating Forward:</strong>
+                        <ul class="custom-list">
+                            <li>
+                                The <code>navigate(1)</code> function call
+                                navigates one page forward in the browser
+                                history.
+                            </li>
+                            <li>
+                                This is equivalent to the user clicking the
+                                browser's forward button.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p><strong>Usage:</strong></p>
+                <p>Attach these functions to events to control navigation.</p>
+                <pre><code class="language-jsx">
+&lt;button onClick={goBack}&gt;Go Back&lt;/button&gt;
+&lt;button onClick={goForward}&gt;Go Forward&lt;/button&gt;
+            </code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Putting It All Together</h3>
+                <ol class="custom-list">
+                    <li>
+                        <strong>Navigate to a Specific Route:</strong>
+                        <ul class="custom-list">
+                            <li>
+                                Use the <code>navigate</code> function to go to
+                                a specific route based on some logic or user
+                                action.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Navigate Backward or Forward:</strong>
+                        <ul class="custom-list">
+                            <li>
+                                Use the <code>navigate</code> function with
+                                <code>1</code> or <code>-1</code> to control the
+                                browser history.
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Conclusion</h3>
+                <p>
+                    In this lesson, we learned how to use the
+                    <code>useNavigate</code> hook from React Router DOM to
+                    programmatically navigate between routes. We explored how to
+                    navigate to a specific route and how to move backward or
+                    forward in the browser history. These techniques are
+                    fundamental for building a dynamic and responsive navigation
+                    system in your React application.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Additional Resources</h3>
+                <ul class="custom-list">
+                    <li>
+                        <a
+                            href="https://reactrouter.com/web/guides/quick-start"
+                            target="_blank"
+                            rel="noopener"
+                            >React Router DOM Documentation</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <footer class="slide-footer"></footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Level 4 - Advanced React - Introduction to React Router DOM
+        </title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Introduction to React Router DOM</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        Clone the lesson repository, install, import and setup
+                        initial Router components
+                    </li>
+                    <li>Associate a route path with an element</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>React Router DOM</h3>
+                <p>
+                    In the following lessons, you will learn about React Router
+                    DOM and its key components. To follow along with the next
+                    four videos on React Router DOM, you will use a specific
+                    GitHub repository.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Cloning the Repository</h3>
+                <p>To get started, follow these steps:</p>
+                <ol class="custom-list">
+                    <li>
+                        <strong>Clone the Repository:</strong><br />Open your
+                        terminal and run the following command to clone the
+                        repository:
+                        <pre><code class="language-bash">
+git clone https://github.com/VSchool/web-dev-react-router-dom.git
+                    </code></pre>
+                    </li>
+                    <li>
+                        <strong>Prepare the Project:</strong><br />Navigate into
+                        the project directory, remove the existing
+                        <code>.git</code> directory, and install all necessary
+                        dependencies:
+                        <pre><code class="language-bash">
+cd web-dev-react-router-dom
+rm -rf .git
+npm install
+                    </code></pre>
+                        <iframe
+                            class="video-embed"
+                            src="https://www.youtube.com/embed/VykYT9WMQxY"
+                            title="Setup Video for React Router DOM Repository"
+                            frameborder="0"
+                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            aria-label="Video demonstrating setup for React Router DOM repository"></iframe>
+                    </li>
+                </ol>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    Introduction to React Router DOM: BrowserRouter, Routes, and
+                    Route
+                </h3>
+                <p>
+                    React Router DOM is a powerful library used to handle
+                    routing in React applications. It allows you to create a
+                    multi-page user experience in a single-page application by
+                    mapping components to different URLs. Understanding its key
+                    components—<code>BrowserRouter</code>, <code>Routes</code>,
+                    and <code>Route</code>—is essential for managing navigation
+                    in your React app effectively. Let's explore these
+                    components in detail.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>BrowserRouter</h3>
+                <p>
+                    <code>BrowserRouter</code> is the foundation of the React
+                    Router library. It uses the HTML5 history API to keep your
+                    UI in sync with the URL. This component should wrap the part
+                    of your application where you want to use routing.
+                </p>
+                <p>
+                    Typically, you wrap your entire application in
+                    <code>BrowserRouter</code>, often in a file like
+                    <code>main.jsx</code>.
+                </p>
+                <pre><code class="language-jsx">
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  &lt;BrowserRouter&gt;
+    &lt;App /&gt;
+  &lt;/BrowserRouter&gt;
+);
+            </code></pre>
+                <p>
+                    By wrapping your application with
+                    <code>BrowserRouter</code> in <code>main.jsx</code>, you
+                    enable routing capabilities, allowing your app to respond to
+                    URL changes.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Routes and Route</h3>
+                <p>
+                    <code>Routes</code> is a container component used to define
+                    the paths (routes) and their corresponding components.
+                    Inside <code>Routes</code>, you use the
+                    <code>Route</code> component to specify the URL path and the
+                    component to render.
+                </p>
+                <pre><code class="language-jsx">
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import About from './About';
+import Contact from './Contact';
+
+function App() {
+  return (
+    &lt;Routes&gt;
+      &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+      &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+      &lt;Route path="/contact" element={&lt;Contact /&gt;} /&gt;
+    &lt;/Routes&gt;
+  );
+}
+
+export default App;
+            </code></pre>
+                <p>In the above example:</p>
+                <ul class="custom-list">
+                    <li>
+                        <code>path="/"</code> defines the root route, rendering
+                        the <code>Home</code> component.
+                    </li>
+                    <li>
+                        <code>path="/about"</code> and
+                        <code>path="/contact"</code> define additional routes,
+                        rendering the <code>About</code> and
+                        <code>Contact</code> components respectively.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Key Concepts</h3>
+                <ul class="custom-list">
+                    <li>
+                        <strong>Dynamic Routing</strong>: React Router allows
+                        you to create routes dynamically, responding to changes
+                        in the URL and rendering the appropriate component.
+                    </li>
+                    <li>
+                        <strong>Nested Routes</strong>: You can nest routes
+                        within other routes, enabling complex UI structures.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Conclusion</h3>
+                <p>
+                    React Router DOM is an essential tool for adding routing
+                    capabilities to your React applications. By understanding
+                    and utilizing <code>BrowserRouter</code>,
+                    <code>Routes</code>, and <code>Route</code>, you can create
+                    a smooth and intuitive navigation experience for your users.
+                    These components enable you to map different URLs to
+                    specific components, manage dynamic routing, and enhance the
+                    overall structure of your application.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Additional Resources</h3>
+                <ul class="custom-list">
+                    <li>
+                        <a
+                            href="https://reactrouter.com/web/guides/quick-start"
+                            target="_blank"
+                            rel="noopener"
+                            >React Router DOM Documentation</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

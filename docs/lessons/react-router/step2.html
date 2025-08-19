@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Level 4 - Advanced React - Introduction to the Link Component
+        </title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">
+                    Introduction to the Link Component in React Router DOM
+                </h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <div class="section">
+                <iframe
+                    class="video-embed"
+                    src="https://www.youtube.com/embed/aDvjmngB1-Y"
+                    title="Introduction to the Link Component in React Router DOM"
+                    frameborder="0"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    aria-label="Video introducing the Link component in React Router DOM"></iframe>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        Extend their SPA’s navigation with the Link component
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>What is React Router DOM?</h3>
+                <p>
+                    React Router DOM is a library used to handle routing in
+                    React applications. It allows developers to create Single
+                    Page Applications (SPAs) with navigation that doesn't
+                    require a page reload.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Why Use the <code>Link</code> Component?</h3>
+                <p>
+                    The <code>Link</code> component is a part of React Router
+                    DOM that facilitates navigation between different routes in
+                    a React application. It is similar to the
+                    <code>&lt;a&gt;</code> tag in HTML but more powerful because
+                    it prevents the page from reloading when navigating, thus
+                    providing a smoother user experience.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>
+                    Creating a Link and Its Relationship with the
+                    <code>Route</code> Component
+                </h3>
+                <p>
+                    Let's explore how to create a <code>Link</code> and its
+                    relationship with the <code>Route</code> component through a
+                    practical example.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Basic Setup</h3>
+                <p>
+                    We'll start by setting up our router with some basic routes.
+                    Here is an example of an <code>App</code> component with
+                    routing and navigation.
+                </p>
+                <pre><code class="language-jsx">
+import './App.css';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import InventoryPage from './components/InventoryPage';
+import { Routes, Route } from 'react-router-dom';
+
+function App() {
+  return (
+    &lt;&gt;
+      &lt;Navbar /&gt;
+      &lt;Routes&gt;
+        &lt;Route path='/' element={&lt;Home /&gt;} /&gt;
+        &lt;Route path='/inventory' element={&lt;InventoryPage /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/&gt;
+  );
+}
+
+export default App;
+            </code></pre>
+                <p>In this setup, we have defined three routes:</p>
+                <ul class="custom-list">
+                    <li><code>/</code> for the Home page.</li>
+                    <li><code>/inventory</code> for the Inventory page.</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Adding Navigation with <code>Link</code></h3>
+                <p>
+                    Next, we'll add a navigation bar using the
+                    <code>Link</code> component to allow users to switch between
+                    the Home and Inventory pages.
+                </p>
+                <pre><code class="language-jsx">
+import { Link } from 'react-router-dom';
+
+function Navbar() {
+  return (
+    &lt;div className="navbar"&gt;
+      &lt;Link to='/'&gt;&lt;button&gt;Home&lt;/button&gt;&lt;/Link&gt;
+      &lt;Link to='/inventory'&gt;&lt;button&gt;Inventory&lt;/button&gt;&lt;/Link&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Navbar;
+            </code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Explanation</h3>
+                <ul class="custom-list">
+                    <li>
+                        <strong>The <code>Link</code> Component</strong>: The
+                        <code>Link</code> component is used to create navigation
+                        links. The <code>to</code> attribute specifies the path
+                        to navigate to. In this case,
+                        <code>&lt;Link to="/"&gt;Home&lt;/Link&gt;</code> and
+                        <code
+                            >&lt;Link
+                            to="/inventory"&gt;Inventory&lt;/Link&gt;</code
+                        >
+                        create links to the Home and Inventory pages,
+                        respectively.
+                    </li>
+                    <li>
+                        <strong>Relationship with <code>Route</code></strong
+                        >: The <code>Route</code> components define the paths
+                        and the corresponding components to render. When a
+                        <code>Link</code> is clicked, React Router updates the
+                        URL and renders the component associated with the new
+                        URL path without reloading the page. For instance,
+                        clicking the "Home" link will update the URL to
+                        <code>/</code> and render the
+                        <code>Home</code> component.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Conclusion</h3>
+                <p>
+                    The <code>Link</code> component in React Router DOM is a
+                    powerful tool for creating navigation in React applications.
+                    It provides a seamless way to navigate between different
+                    routes without reloading the page, enhancing the user
+                    experience. By using <code>Link</code>, developers can
+                    create SPAs with intuitive and responsive navigation.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Additional Resources</h3>
+                <ul class="custom-list">
+                    <li>
+                        <a
+                            href="https://reactrouter.com/web/guides/quick-start"
+                            target="_blank"
+                            rel="noopener"
+                            >React Router DOM Documentation</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

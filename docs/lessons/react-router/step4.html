@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Introduction to the useParams Hook in React Router DOM</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="lesson-header">
+            <header class="slide-header">
+                <h1 id="lesson-header">Intro to the useParams Hook</h1>
+                <h2>Lesson</h2>
+            </header>
+
+            <div class="section">
+                <iframe
+                    class="video-embed"
+                    src="https://www.youtube.com/embed/sx1UieHI4Hg"
+                    title="Introduction to the useParams Hook in React Router DOM"
+                    frameborder="0"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    aria-label="Video demonstrating the useParams hook in React Router DOM"></iframe>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Learning Objectives</h3>
+                <p>Students will be able to:</p>
+                <ul class="custom-list">
+                    <li>
+                        Apply route params to create a dynamic route and
+                        navigate to multiple template views on a site
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>What is React Router DOM?</h3>
+                <p>
+                    React Router DOM is a library used to handle routing in
+                    React applications. It allows developers to create Single
+                    Page Applications (SPAs) with navigation that doesn't
+                    require a page reload.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Why Use the <code>useParams</code> Hook?</h3>
+                <p>
+                    The <code>useParams</code> hook is a part of React Router
+                    DOM that allows you to access the parameters of the current
+                    route. It is particularly useful for extracting dynamic
+                    parameters from the URL, such as IDs, which can then be used
+                    to fetch data or display specific content based on the URL.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Accessing Route Parameters with <code>useParams</code></h3>
+                <p>
+                    Let's explore how to use the <code>useParams</code> hook to
+                    access route parameters through a practical example.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Basic Setup</h3>
+                <p>
+                    We'll start by setting up our router with some basic routes.
+                    Here is an example of an <code>App</code> component with
+                    routing and navigation.
+                </p>
+                <pre><code class="language-jsx">
+import './App.css';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import InventoryPage from './components/InventoryPage';
+import InventoryDetails from './components/InventoryDetails';
+import { Routes, Route } from 'react-router-dom';
+
+function App() {
+  return (
+    &lt;&gt;
+      &lt;Navbar /&gt;
+      &lt;Routes&gt;
+        &lt;Route path='/' element={&lt;Home /&gt;} /&gt;
+        &lt;Route path='/inventory' element={&lt;InventoryPage /&gt;} /&gt;
+        &lt;Route path='/inventory/:id' element={&lt;InventoryDetails /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/&gt;
+  );
+}
+
+export default App;
+            </code></pre>
+                <p>In this setup, we have defined three routes:</p>
+                <ul class="custom-list">
+                    <li><code>/</code> for the Home page.</li>
+                    <li><code>/inventory</code> for the Inventory page.</li>
+                    <li>
+                        <code>/inventory/:id</code> for the Inventory Details
+                        page, where <code>:id</code> is a dynamic parameter.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Accessing Route Parameters with <code>useParams</code></h3>
+                <p>
+                    Next, we'll use the <code>useParams</code> hook in the
+                    <code>InventoryDetails</code> component to access the
+                    dynamic <code>id</code> parameter from the URL.
+                </p>
+                <pre><code class="language-jsx">
+import { useParams } from 'react-router-dom';
+
+function InventoryDetails() {
+  let { id } = useParams();
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Inventory Details&lt;/h2&gt;
+      &lt;p&gt;Item ID: {id}&lt;/p&gt;
+      {/* Use the id to fetch or display more details about the inventory item */}
+    &lt;/div&gt;
+  );
+}
+
+export default InventoryDetails;
+            </code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Explanation</h3>
+                <ul class="custom-list">
+                    <li>
+                        <strong>The <code>useParams</code> Hook</strong>: The
+                        <code>useParams</code> hook is used to access the
+                        dynamic parameters of the current route. In this case,
+                        <code>let { id } = useParams();</code> extracts the
+                        <code>id</code> parameter from the URL.
+                    </li>
+                    <li>
+                        <strong>Using Route Parameters</strong>: The extracted
+                        <code>id</code> parameter can be used to fetch or
+                        display specific details about an item. For example, in
+                        the <code>InventoryDetails</code> component, we display
+                        the <code>id</code> parameter directly in the UI. In a
+                        real application, you might use this <code>id</code> to
+                        fetch data from an API or a database.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Conclusion</h3>
+                <p>
+                    The <code>useParams</code> hook in React Router DOM is a
+                    powerful tool for accessing dynamic route parameters in
+                    React applications. It allows developers to extract and use
+                    parameters from the URL, enabling the creation of more
+                    dynamic and responsive applications. By using
+                    <code>useParams</code>, you can easily fetch and display
+                    data based on the current route, enhancing the functionality
+                    of your SPAs.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Additional Resources</h3>
+                <ul class="custom-list">
+                    <li>
+                        <a
+                            href="https://reactrouter.com/web/guides/quick-start"
+                            target="_blank"
+                            rel="noopener"
+                            >React Router DOM Documentation</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <footer class="slide-footer"></footer>
+        </div>
+    </body>
+</html>
