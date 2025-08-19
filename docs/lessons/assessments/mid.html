@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Level 4 - Advanced React - Mid Level Skill Check</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="skill-check-header">
+            <header class="slide-header">
+                <h1 id="skill-check-header">Mid Level Skill Check</h1>
+                <h2>Assessment</h2>
+            </header>
+
+            <div class="section">
+                <p>
+                    This is a moment for you to test your coding skills and
+                    prepare yourself for an interview. Below you will see two
+                    code challenges for you to complete. You will also need to
+                    add comments or pseudo-code to your project in order to
+                    describe your process. Next you will complete a quiz that
+                    will test the knowledge you have gained so far. Once you
+                    have completed the challenges, schedule an assessment to
+                    review with an instructor and do a third coding challenge
+                    live!
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Filter Anagrams</h3>
+                <p>
+                    Write a function called <code>filterAnagrams</code> that
+                    filters an array of words to find and return an array
+                    containing only the words that are anagrams of a given
+                    target word.
+                </p>
+                <p><strong>Understand the Problem:</strong></p>
+                <p>
+                    Before you start coding, make sure you understand what the
+                    challenge is asking. You need to filter a given array of
+                    words to find the anagrams of a target word. Anagrams are
+                    words that have the same letters but in a different order.
+                </p>
+                <pre><code class="language-jsx">
+function filterAnagrams(arr, target) {
+  // Your Code Here
+}
+
+const words = ['listen', 'silent', 'dog', 'god', 'hello', 'world'];
+const target = 'enlist';
+
+const anagrams = filterAnagrams(words, target);
+console.log(anagrams); // Output: ['listen', 'silent']
+            </code></pre>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Sort by Multiple Criteria</h3>
+                <p>
+                    Write a function called
+                    <code>sortByMultipleCriteria</code> that takes an array of
+                    objects representing people, each with a
+                    <code>name</code> (string) and <code>age</code> (number)
+                    property. The function should return a new array with the
+                    people sorted first by age in ascending order, and then by
+                    name in alphabetical order.
+                </p>
+                <pre><code class="language-jsx">
+function sortByMultipleCriteria(people) {
+  // Your Code Here
+}
+
+const people = [
+{ name: 'Alice', age: 30 },
+{ name: 'Bob', age: 25 },
+{ name: 'Charlie', age: 35 },
+{ name: 'David', age: 25 },
+];
+
+const sortedPeople = sortByMultipleCriteria(people);
+console.log(sortedPeople);
+
+// Expected outcome: [
+//  { name: 'Bob', age: 25 },
+//  { name: 'David', age: 25 },
+//  { name: 'Alice', age: 30 },
+//  { name: 'Charlie', age: 35 }
+// ]
+            </code></pre>
+            </div>
+        </div>
+    </body>
+</html>
