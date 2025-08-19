@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React Context Review</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="review-header">
+            <header class="slide-header">
+                <h1 id="review-header">React Context</h1>
+                <h2>Review</h2>
+            </header>
+
+            <div class="section">
+                <iframe
+                    class="video-embed"
+                    src="https://www.youtube.com/embed/VF0qytrx_Ow"
+                    title="React Context Review Video"
+                    frameborder="0"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    aria-label="Video reviewing React Context concepts and examples"></iframe>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <p>
+                    Apologies that Zoom put the cameras over some of the
+                    curriculum in the recording.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>What is React Context?</h3>
+                <ul class="custom-list">
+                    <li>
+                        It's a way to share data and functionality between
+                        components in a React application without having to pass
+                        props down through every level of the component tree.
+                    </li>
+                    <li>
+                        Think of it as a global bulletin board or shared space
+                        where any component can access and update information.
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>What is it for?</h3>
+                <ul class="custom-list">
+                    <li>Ideal for sharing:</li>
+                    <li>
+                        Global data (e.g., user authentication state, theme
+                        preferences)
+                    </li>
+                    <li>
+                        Frequently accessed data (e.g., cart items, current user
+                        profile)
+                    </li>
+                    <li>
+                        Data that needs to trigger updates in multiple
+                        components
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>How it scales:</h3>
+                <ul class="custom-list">
+                    <li>
+                        Can be used with large, complex component trees to avoid
+                        excessive prop drilling
+                    </li>
+                    <li>
+                        Improves performance by reducing unnecessary re-renders
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Pros:</h3>
+                <ul class="custom-list">
+                    <li>Avoids prop drilling</li>
+                    <li>Simplifies data sharing across multiple components</li>
+                    <li>Potentially improves performance</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Cons:</h3>
+                <ul class="custom-list">
+                    <li>Can introduce complexity if overused</li>
+                    <li>
+                        Might make it harder to track data flow in larger
+                        applications
+                    </li>
+                    <li>
+                        Potential for performance overhead if used with
+                        frequently updating data
+                    </li>
+                </ul>
+            </div>
+
+            <footer class="slide-footer"></footer>
+        </div>
+    </body>
+</html>

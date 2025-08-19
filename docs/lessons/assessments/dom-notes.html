@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Powerpoint Notes for React Router DOM Review</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="notes-header">
+            <header class="slide-header">
+                <h1 id="notes-header">
+                    Powerpoint Notes for React Router DOM Review
+                </h1>
+                <h2>Notes</h2>
+            </header>
+
+            <div class="section">
+                <h3>Slide 1</h3>
+                <p>Wait for students, introudction</p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 2</h3>
+                <p>Go through objective of workshop</p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 3</h3>
+                <ol class="custom-list">
+                    <li>
+                        <strong
+                            >Improved User Experience with Smooth Transitions
+                            Between Pages:</strong
+                        ><br />React Router DOM significantly enhances the user
+                        experience by enabling seamless transitions between
+                        pages. The library facilitates the creation of dynamic,
+                        single-page applications where content updates smoothly
+                        without requiring full page reloads. This results in a
+                        more fluid and engaging navigation experience for users,
+                        contributing to a modern and responsive feel in web
+                        applications.
+                    </li>
+                    <li>
+                        <strong>Better SEO by Managing URL Structure:</strong
+                        ><br />React Router DOM plays a crucial role in
+                        improving search engine optimization (SEO) by
+                        effectively managing the URL structure of a web
+                        application. It enables developers to create meaningful
+                        and descriptive URLs for different pages, making it
+                        easier for search engines to crawl and index the
+                        content. A well-organized URL structure contributes to
+                        better visibility on search engine results pages,
+                        ultimately enhancing the discoverability of the
+                        application.
+                    </li>
+                    <li>
+                        <strong
+                            >Easier Application Maintenance and Code
+                            Organization:</strong
+                        ><br />The use of React Router DOM promotes better code
+                        organization and simplifies the maintenance of web
+                        applications. By providing a structured way to handle
+                        routing and navigation, developers can easily manage
+                        different sections of their projects. This modular
+                        approach enhances code readability, reduces complexity,
+                        and streamlines updates and modifications, contributing
+                        to more efficient and maintainable codebases.
+                    </li>
+                    <li>
+                        <strong
+                            >Enhanced Accessibility for Screen Readers and
+                            Assistive Technologies:</strong
+                        ><br />React Router DOM goes beyond basic navigation by
+                        incorporating features that enhance accessibility for
+                        users with disabilities. It ensures compatibility with
+                        screen readers and assistive technologies, making the
+                        web application more inclusive. Proper navigation
+                        landmarks and semantic HTML elements are employed,
+                        enabling users who rely on assistive technologies to
+                        navigate through the application seamlessly, improving
+                        overall accessibility and user reach.
+                    </li>
+                </ol>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 4 & 5</h3>
+                <p>
+                    React Router DOM is a powerful navigation library for React
+                    applications that helps manage and synchronize the URL with
+                    the application's UI state.
+                </p>
+                <p>Beginning of Section 1: Setting up Routes</p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 6</h3>
+                <p>
+                    <strong><code>&lt;BrowserRouter&gt;</code></strong
+                    >: Serving as the outermost component,
+                    <strong><code>&lt;BrowserRouter&gt;</code></strong> provides
+                    the foundation for client-side routing. It utilizes the
+                    HTML5 History API to manipulate the URL in the browser
+                    without triggering a full page reload. This enables React to
+                    render different components based on the current URL,
+                    creating a single-page application experience.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 7</h3>
+                <p>
+                    <strong><code>&lt;Routes&gt;</code></strong
+                    >: Nested within
+                    <strong><code>&lt;BrowserRouter&gt;</code></strong
+                    >, <strong><code>&lt;Routes&gt;</code></strong> is a
+                    container for individual route configurations. It allows
+                    developers to define a collection of
+                    <strong><code>&lt;Route&gt;</code></strong> components, each
+                    corresponding to a specific URL path. This centralization of
+                    route definitions promotes cleaner and more organized code.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 8</h3>
+                <p>
+                    <strong
+                        ><code
+                            >&lt;Route path="/" element={&lt;Home /&gt;}
+                            /&gt;</code
+                        ></strong
+                    >: This
+                    <strong><code>&lt;Route&gt;</code></strong> component is
+                    configured to match the root path ("/") and render the
+                    <strong><code>&lt;Home /&gt;</code></strong> component when
+                    the URL corresponds to this path. It serves as the entry
+                    point for the application or the default landing page.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 9 & 10</h3>
+                <p>
+                    The <code>Link</code> component in React Router DOM serves
+                    as a declarative and efficient means of implementing
+                    navigation within a React application. By importing it from
+                    the 'react-router-dom' package and utilizing the
+                    <code>to</code> prop, the <code>Link</code> component allows
+                    developers to define navigation links that seamlessly update
+                    the UI based on specified paths without triggering full page
+                    reloads. This declarative approach enhances the user
+                    experience in single-page applications, as React Router
+                    internally manages navigation events, preventing default
+                    anchor tag behavior. The <code>Link</code> component is an
+                    integral part of building dynamic and responsive navigation
+                    systems, enabling users to effortlessly transition between
+                    different views or pages within the application.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 11</h3>
+                <p>
+                    In essence, the <strong><code>to</code></strong> prop (in
+                    <strong><code>&lt;Link&gt;</code></strong
+                    >) is about declaring your intended destination, while the
+                    <strong><code>path</code></strong> prop (in
+                    <strong><code>&lt;Route&gt;</code></strong
+                    >) is about setting up the rules or conditions for when to
+                    show certain content based on the user's current location or
+                    URL. Together, they help establish a navigational system
+                    that guides users through the different sections of your
+                    application.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 12 - 14</h3>
+                <p>
+                    The <strong><code>useNavigate</code></strong> hook is a part
+                    of the React Router library, specifically designed for
+                    handling programmatic navigation in React applications. When
+                    invoked, it returns a
+                    <strong><code>navigate</code></strong> function. This
+                    function, when called with a specified path as an argument,
+                    programmatically navigates the user to the corresponding
+                    route, updating the URL and rendering the associated React
+                    component. Essentially,
+                    <strong><code>useNavigate</code></strong> provides a
+                    convenient way for developers to dynamically control
+                    navigation within their application, allowing for seamless
+                    transitions between different views based on specific
+                    events, conditions, or user interactions. This approach to
+                    navigation is particularly valuable in creating more
+                    interactive and responsive user interfaces.
+                </p>
+                <p>why <code>const navigate = useNavigate()</code> ??</p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>Slide 15 & 16</h3>
+                <p>
+                    The <strong><code>useParams</code></strong> hook in React
+                    Router is a utility that allows developers to access and
+                    extract parameters from the URL in a React component. When a
+                    route contains dynamic segments or parameters, such as
+                    <strong><code>/:id</code></strong> in the route path,
+                    <strong><code>useParams</code></strong> enables the
+                    retrieval of these parameters in a straightforward manner.
+                    By invoking <strong><code>useParams</code></strong
+                    >, developers can access an object containing key-value
+                    pairs where the keys correspond to the parameter names
+                    defined in the route, and the values are the actual values
+                    extracted from the current URL. This provides a convenient
+                    and dynamic way to respond to changes in the URL and use the
+                    extracted parameters within the component's logic, allowing
+                    for more flexible and personalized rendering based on the
+                    dynamic aspects of the route.
+                </p>
+            </div>
+
+            <footer class="slide-footer"></footer>
+        </div>
+    </body>
+</html>

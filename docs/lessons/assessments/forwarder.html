@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Request Forwarder</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    </head>
+    <body>
+        <div
+            class="slide-container"
+            role="region"
+            aria-labelledby="documentation-header">
+            <header class="slide-header">
+                <h1 id="documentation-header">Request Forwarder</h1>
+                <h2>Documentation</h2>
+            </header>
+
+            <div class="section">
+                <p>
+                    Browsers use a security feature to inhibit HTTP calls from
+                    one website to another called the "Same Origin Policy." If
+                    you want to consume information from an API on your frontend
+                    client (meaning your frontend client is making an HTTP
+                    request directly to an API), one of 3 things needs to be
+                    true:
+                </p>
+                <ol class="custom-list">
+                    <li>
+                        The API you're calling to has explicitly enabled CORS
+                        (Cross Origin Resource Sharing). This doesn't happen all
+                        that often. APIs like the Pokemon API and the Star Wars
+                        API have, which is why you've been able to get
+                        information from them without problems.
+                    </li>
+                    <li>
+                        The API you're calling to has to enable JSONP, and you
+                        have to make a JSONP call from your client. JSONP stands
+                        for JSON with Padding. The specifics are outside the
+                        scope of this post, but just know that it allows you to
+                        get info from the API directly.
+                    </li>
+                    <li>
+                        You need to write a server to relay requests for you.
+                        The server doesn't have the Same Origin Policy
+                        restriction that browsers have, so you would make a
+                        request to your own server, your server would make the
+                        request to the API, the API sends data to your server,
+                        and your server sends it back to you.
+                    </li>
+                </ol>
+                <p>
+                    <strong
+                        >Since you haven't learned how to write a server yet, we
+                        wrote a simple request forwarder for you!</strong
+                    >
+                </p>
+                <p>
+                    If it isn't working, there is a service that is easy to use
+                    but requires you to manually “request temporary access to
+                    demo server” about once a day
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>CORS Anywhere</h3>
+                <p>
+                    <a
+                        href="http://cors-anywhere.herokuapp.com/corsdemo"
+                        target="_blank"
+                        rel="noopener"
+                        >http://cors-anywhere.herokuapp.com/corsdemo</a
+                    >
+                </p>
+                <p>
+                    Click “request temporary access to demo server” about once a
+                    day. If it suddenly shows that it is forbidden, chances are
+                    you need to click that button again. If you get a “too many
+                    times” warning, you’ve gone over the 50 call per hour limit.
+                </p>
+                <p>
+                    This endpoint works similar to the one you'll find in the
+                    following documentation, but without the <code>?url=</code>.
+                    In the following example you'll see the base router url
+                    followed by the api's url that's blocked by CORS:
+                </p>
+                <pre><code class="language-none">
+https://cors-anywhere.herokuapp.com/https://api.icndb.com/jokes/random
+            </code></pre>
+                <p>
+                    You may need to use postman to make sure you have all
+                    required headers. You may get helpful errors in that
+                    department. I needed to add "X-Requested-With: origin" to
+                    the headers in Postman.
+                </p>
+            </div>
+
+            <hr class="section-divider" />
+
+            <div class="section">
+                <h3>VSchool Forwarder Documentation</h3>
+                <h4>Base URL</h4>
+                <p>
+                    <a
+                        href="https://request-forwarder.onrender.com/"
+                        target="_blank"
+                        rel="noopener"
+                        >https://request-forwarder.onrender.com/</a
+                    >
+                </p>
+                <h4>How to use</h4>
+                <p>
+                    Make a GET or POST request from your client to the Base URL
+                    with a query parameter of <code>url</code>. Set the value of
+                    <code>url</code> to the URL of the API you want to get info
+                    from.
+                </p>
+                <p>
+                    <strong>Note:</strong> If making a POST request, include
+                    your request body like you would normally, and the forwarder
+                    will pass it along for you.
+                </p>
+                <p>
+                    Query parameters allow you to provide additional information
+                    in the URL of your request. You may have noticed a
+                    <code>?</code> and possibly some <code>&</code> scattered in
+                    your url bar before. For example, when you do a google
+                    search for "cors", the URL changes to:
+                </p>
+                <pre><code class="language-none">
+https://www.google.com/search?q=cors
+            </code></pre>
+                <p>
+                    In that URL, <code>?</code> indicates the beginning of a
+                    <em>"query string"</em>. Think of them like key-value pairs:
+                    <code>q</code> is the key, <code>cors</code> is the value.
+                    (Separated in the URL by <code>=</code>).
+                </p>
+                <h4>Example</h4>
+                <p>
+                    Say you want to get a random joke from the
+                    <a
+                        href="http://www.icndb.com/api/"
+                        target="_blank"
+                        rel="noopener"
+                        >Chuck Norris Database</a
+                    >. According to the docs, the URL to get a random joke is
+                    <code>"https://api.icndb.com/jokes/random"</code>
+                </p>
+                <p>
+                    Using the V School cors api, you would make your request to:
+                </p>
+                <pre><code class="language-none">
+hhttps://request-forwarder.onrender.com?url=https://api.icndb.com/jokes/random
+            </code></pre>
+                <p>Everything else should work relatively smoothly.</p>
+                <p>
+                    The V School CORS request forwarder is pretty limited right
+                    now. It will only work on APIs that don't require
+                    authentication of any kind. Maybe in the future we'll add
+                    that capability.
+                </p>
+                <p>
+                    You won't want to use this resource forever or for
+                    everything. If the API you're accessing allows front-end
+                    access, use it! Once you learn how to write your own server,
+                    do it that way instead! But in a pinch,
+                    <a
+                        href="https://request-forwarder.onrender.com/"
+                        target="_blank"
+                        rel="noopener"
+                        >https://request-forwarder.onrender.com/</a
+                    >
+                    is there for you to use on your toy projects. :)
+                </p>
+                <p>Have fun accessing APIs!</p>
+            </div>
+
+            <footer class="slide-footer"></footer>
+        </div>
+    </body>
+</html>
