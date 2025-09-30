@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Router Setup</title>
+        <title>useParams</title>
 
-        <!-- Shared styles for the slide (your global curriculum stylesheet) -->
+        <!-- Shared styles for the slide -->
         <link rel="stylesheet" href="../styles.css" />
 
         <!-- Prism syntax highlighting (CSS) -->
@@ -16,32 +16,22 @@
     <body>
         <main class="slide-container" aria-labelledby="page-title">
             <header class="slide-header">
-                <h1 id="page-title">Router Setup</h1>
+                <h1 id="page-title">useParams</h1>
                 <h2>React Router</h2>
             </header>
 
             <section class="section" aria-labelledby="objectives">
                 <h3 id="objectives">Learning Objectives</h3>
                 <ul>
+                    <li>Apply route params to create a dynamic route.</li>
                     <li>
-                        Clone the lesson repository, install, import and setup
-                        initial Router components.
+                        Render multiple template views driven by URL segments.
                     </li>
-                    <li>Associate a route path with an element.</li>
                 </ul>
             </section>
 
-            <section class="section" aria-labelledby="repo">
-                <h3 id="repo">React Router DOM Setup Repo</h3>
-                <p>Clone and prep the starter project:</p>
-                <pre><code class="language-bash">git clone https://github.com/VSchool/web-dev-react-router-dom.git
-cd web-dev-react-router-dom
-rm -rf .git
-npm install</code></pre>
-            </section>
-
             <section class="section" aria-labelledby="video">
-                <h3 id="video">Walkthrough Video</h3>
+                <h3 id="video">Lesson Video</h3>
                 <!-- YouTube embed -->
                 <div
                     class="video-embed"
@@ -53,8 +43,8 @@ npm install</code></pre>
                         border-radius: 12px;
                     ">
                     <iframe
-                        src="https://www.youtube.com/embed/VykYT9WMQxY"
-                        title="Router Setup"
+                        src="https://www.youtube.com/embed/sx1UieHI4Hg"
+                        title="React Router useParams"
                         style="
                             position: absolute;
                             top: 0;
@@ -69,7 +59,7 @@ npm install</code></pre>
                 </div>
                 <p>
                     <a
-                        href="https://youtu.be/VykYT9WMQxY"
+                        href="https://youtu.be/sx1UieHI4Hg"
                         target="_blank"
                         rel="noopener"
                         >Open on YouTube</a
@@ -77,69 +67,87 @@ npm install</code></pre>
                 </p>
             </section>
 
-            <section class="section" aria-labelledby="browserrouter">
-                <h3 id="browserrouter">BrowserRouter Wrapper</h3>
-                <p>Enable routing by wrapping your app at the entry point:</p>
-                <pre><code class="language-jsx">// main.jsx
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App";
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  &lt;BrowserRouter&gt;
-    &lt;App /&gt;
-  &lt;/BrowserRouter&gt;
-);
-</code></pre>
-            </section>
-
             <section class="section" aria-labelledby="routes">
-                <h3 id="routes">Routes &amp; Route</h3>
-                <p>Associate URL paths with components:</p>
+                <h3 id="routes">Define a Dynamic Route</h3>
                 <pre><code class="language-jsx">// App.jsx
 import { Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
-import Contact from "./Contact";
+import Home from "./components/Home";
+import InventoryPage from "./components/InventoryPage";
+import InventoryDetails from "./components/InventoryDetails";
 
 export default function App() {
   return (
-    &lt;Routes&gt;
-      &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
-      &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
-      &lt;Route path="/contact" element={&lt;Contact /&gt;} /&gt;
-    &lt;Routes&gt;
+    &lt;&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/inventory" element={&lt;InventoryPage /&gt;} /&gt;
+        {/* Dynamic segment */}
+        &lt;Route path="/inventory/:id" element={&lt;InventoryDetails /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/&gt;
+  );
+}
+</code></pre>
+            </section>
+
+            <section class="section" aria-labelledby="useparams">
+                <h3 id="useparams">
+                    Access Params with <code>useParams</code>
+                </h3>
+                <pre><code class="language-jsx">// components/InventoryDetails.jsx
+import { useParams } from "react-router-dom";
+
+export default function InventoryDetails() {
+  const { id } = useParams(); // &quot;id&quot; comes from the route path
+
+  return (
+    &lt;section&gt;
+      &lt;h2&gt;Inventory Details&lt;/h2&gt;
+      &lt;p&gt;Item ID: {id}&lt;/p&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre>
+            </section>
+
+            <section class="section" aria-labelledby="fetch">
+                <h3 id="fetch">Fetching by Param</h3>
+                <pre><code class="language-jsx">// components/InventoryDetails.jsx
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+export default function InventoryDetails() {
+  const { id } = useParams();
+  const [item, setItem] = useState(null);
+
+  useEffect(() =&gt; {
+    let ignore = false;
+    axios.get(`/api/inventory/${id}`).then(res =&gt; {
+      if (!ignore) setItem(res.data);
+    }).catch(console.error);
+    return () =&gt; { ignore = true; };
+  }, [id]);
+
+  if (!item) return &lt;p&gt;Loading...&lt;/p&gt;;
+
+  return (
+    &lt;article&gt;
+      &lt;h3&gt;{item.name}&lt;/h3&gt;
+      &lt;p&gt;SKU: {item.sku}&lt;/p&gt;
+      &lt;p&gt;Price: ${item.price}&lt;/p&gt;
+    &lt;/article&gt;
   );
 }
 </code></pre>
                 <ul>
                     <li>
-                        <code>&lt;Routes&gt;</code> picks the best matching
-                        <code>&lt;Route&gt;</code> for the current URL.
+                        Params are strings—convert to a number if needed:
+                        <code>Number(id)</code>.
                     </li>
                     <li>
-                        <strong>Path</strong> defines the URL segment;
-                        <strong>element</strong> renders the component.
-                    </li>
-                </ul>
-            </section>
-
-            <section class="section" aria-labelledby="tips">
-                <h3 id="tips">Tips</h3>
-                <ul>
-                    <li>
-                        Keep <code>&lt;BrowserRouter&gt;</code> as high as
-                        possible (usually in <code>main.jsx</code>).
-                    </li>
-                    <li>
-                        Use <code>&lt;Link&gt;</code> or
-                        <code>&lt;NavLink&gt;</code> instead of anchor tags for
-                        client-side navigation.
-                    </li>
-                    <li>
-                        Plan for nested routes with
-                        <code>&lt;Outlet&gt;</code> as your app grows.
+                        Include <code>[id]</code> in the dependency array to
+                        refetch on param changes.
                     </li>
                 </ul>
             </section>
@@ -152,20 +160,23 @@ export default function App() {
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
 
-        <!-- Lesson entry script (Level 4, Section REACT_ROUTER, Lesson 002) -->
+        <!-- Your app bundle (if any shared behaviors are needed) -->
+        <script src="../app.js"></script>
+
+        <!-- Lesson entry script -->
         <script
             src="https://vschool-reports.netlify.app/ltp.js"
             data-api="https://vschool-reports.netlify.app"
-            data-lesson-id="L4-REACT_ROUTER-002"
-            data-lesson-title="Router Setup"
+            data-lesson-id="L4-REACT_ROUTER-005"
+            data-lesson-title="useParams"
             data-course-id="Web Development"></script>
 
-        <!-- Feedback script (no visible button included) -->
+        <!-- Feedback script -->
         <script
             src="https://vschool-reports.netlify.app/feedback.js"
             data-api="https://vschool-reports.netlify.app"
-            data-lesson-id="L4-REACT_ROUTER-002"
-            data-lesson-title="Router Setup"
+            data-lesson-id="L4-REACT_ROUTER-005"
+            data-lesson-title="useParams"
             data-course-id="Web Development"
             data-button-selector="#myFeedbackBtn"></script>
     </body>

@@ -3,211 +3,195 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Introduction to the useParams Hook in React Router DOM</title>
-        <link rel="stylesheet" href="styles.css" />
+        <title>useNavigate</title>
+
+        <!-- Shared styles for the slide -->
+        <link rel="stylesheet" href="../styles.css" />
+
+        <!-- Prism syntax highlighting (CSS) -->
         <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+            href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
     </head>
     <body>
-        <div
-            class="slide-container"
-            role="region"
-            aria-labelledby="lesson-header">
+        <main class="slide-container" aria-labelledby="page-title">
             <header class="slide-header">
-                <h1 id="lesson-header">Intro to the useParams Hook</h1>
-                <h2>Lesson</h2>
+                <h1 id="page-title">useNavigate</h1>
+                <h2>React Router</h2>
             </header>
 
-            <div class="section">
-                <iframe
-                    class="video-embed"
-                    src="https://www.youtube.com/embed/sx1UieHI4Hg"
-                    title="Introduction to the useParams Hook in React Router DOM"
-                    frameborder="0"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    aria-label="Video demonstrating the useParams hook in React Router DOM"></iframe>
-            </div>
-
-            <hr class="section-divider" />
-
-            <div class="section">
-                <h3>Learning Objectives</h3>
-                <p>Students will be able to:</p>
-                <ul class="custom-list">
-                    <li>
-                        Apply route params to create a dynamic route and
-                        navigate to multiple template views on a site
-                    </li>
+            <section class="section" aria-labelledby="objectives">
+                <h3 id="objectives">Learning Objectives</h3>
+                <ul>
+                    <li>Implement the <code>useNavigate</code> hook.</li>
+                    <li>Evaluate use cases for programmatic navigation.</li>
                 </ul>
-            </div>
+            </section>
 
-            <hr class="section-divider" />
-
-            <div class="section">
-                <h3>What is React Router DOM?</h3>
+            <section class="section" aria-labelledby="video">
+                <h3 id="video">Lesson Video</h3>
+                <!-- YouTube embed -->
+                <div
+                    class="video-embed"
+                    style="
+                        position: relative;
+                        padding-bottom: 56.25%;
+                        height: 0;
+                        overflow: hidden;
+                        border-radius: 12px;
+                    ">
+                    <iframe
+                        src="https://www.youtube.com/embed/bgfG5umOwEc"
+                        title="React Router useNavigate"
+                        style="
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border: 0;
+                        "
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen></iframe>
+                </div>
                 <p>
-                    React Router DOM is a library used to handle routing in
-                    React applications. It allows developers to create Single
-                    Page Applications (SPAs) with navigation that doesn't
-                    require a page reload.
+                    <a
+                        href="https://youtu.be/bgfG5umOwEc"
+                        target="_blank"
+                        rel="noopener"
+                        >Open on YouTube</a
+                    >
                 </p>
-            </div>
+            </section>
 
-            <hr class="section-divider" />
-
-            <div class="section">
-                <h3>Why Use the <code>useParams</code> Hook?</h3>
+            <section class="section" aria-labelledby="basic">
+                <h3 id="basic">Basic Usage</h3>
                 <p>
-                    The <code>useParams</code> hook is a part of React Router
-                    DOM that allows you to access the parameters of the current
-                    route. It is particularly useful for extracting dynamic
-                    parameters from the URL, such as IDs, which can then be used
-                    to fetch data or display specific content based on the URL.
+                    <code>useNavigate</code> returns a function for programmatic
+                    navigation. Invoke it to move to a route after an action
+                    (form submit, API success, etc.).
                 </p>
-            </div>
+                <pre><code class="language-jsx">// components/InventoryItemCard.jsx
+import { useNavigate } from "react-router-dom";
 
-            <hr class="section-divider" />
+export default function InventoryItemCard({ item }) {
+  const navigate = useNavigate();
 
-            <div class="section">
-                <h3>Accessing Route Parameters with <code>useParams</code></h3>
-                <p>
-                    Let's explore how to use the <code>useParams</code> hook to
-                    access route parameters through a practical example.
-                </p>
-            </div>
+  function openDetails() {
+    // Navigate to a specific route
+    navigate(`/inventory/${item.id}`);
+  }
 
-            <hr class="section-divider" />
-
-            <div class="section">
-                <h3>Basic Setup</h3>
-                <p>
-                    We'll start by setting up our router with some basic routes.
-                    Here is an example of an <code>App</code> component with
-                    routing and navigation.
-                </p>
-                <pre><code class="language-jsx">
-import './App.css';
-import Home from './components/Home';
-import Navbar from './components/Navbar';
-import InventoryPage from './components/InventoryPage';
-import InventoryDetails from './components/InventoryDetails';
-import { Routes, Route } from 'react-router-dom';
-
-function App() {
   return (
-    &lt;&gt;
-      &lt;Navbar /&gt;
-      &lt;Routes&gt;
-        &lt;Route path='/' element={&lt;Home /&gt;} /&gt;
-        &lt;Route path='/inventory' element={&lt;InventoryPage /&gt;} /&gt;
-        &lt;Route path='/inventory/:id' element={&lt;InventoryDetails /&gt;} /&gt;
-      &lt;/Routes&gt;
-    &lt;/&gt;
+    &lt;article className="card"&gt;
+      &lt;h3&gt;{item.name}&lt;/h3&gt;
+      &lt;button onClick={openDetails}&gt;View Details&lt;/button&gt;
+    &lt;/article&gt;
   );
 }
+</code></pre>
+            </section>
 
-export default App;
-            </code></pre>
-                <p>In this setup, we have defined three routes:</p>
-                <ul class="custom-list">
-                    <li><code>/</code> for the Home page.</li>
-                    <li><code>/inventory</code> for the Inventory page.</li>
-                    <li>
-                        <code>/inventory/:id</code> for the Inventory Details
-                        page, where <code>:id</code> is a dynamic parameter.
-                    </li>
-                </ul>
-            </div>
-
-            <hr class="section-divider" />
-
-            <div class="section">
-                <h3>Accessing Route Parameters with <code>useParams</code></h3>
+            <section class="section" aria-labelledby="history">
+                <h3 id="history">Navigate Backward / Forward</h3>
                 <p>
-                    Next, we'll use the <code>useParams</code> hook in the
-                    <code>InventoryDetails</code> component to access the
-                    dynamic <code>id</code> parameter from the URL.
+                    You can move through browser history by passing a relative
+                    delta.
                 </p>
-                <pre><code class="language-jsx">
-import { useParams } from 'react-router-dom';
+                <pre><code class="language-jsx">// components/HistoryControls.jsx
+import { useNavigate } from "react-router-dom";
 
-function InventoryDetails() {
-  let { id } = useParams();
-
+export default function HistoryControls() {
+  const navigate = useNavigate();
   return (
-    &lt;div&gt;
-      &lt;h2&gt;Inventory Details&lt;/h2&gt;
-      &lt;p&gt;Item ID: {id}&lt;/p&gt;
-      {/* Use the id to fetch or display more details about the inventory item */}
+    &lt;div className="controls"&gt;
+      &lt;button onClick={() =&gt; navigate(-1)}&gt;Go Back&lt;/button&gt;
+      &lt;button onClick={() =&gt; navigate(1)}&gt;Go Forward&lt;/button&gt;
     &lt;/div&gt;
   );
 }
+</code></pre>
+            </section>
 
-export default InventoryDetails;
-            </code></pre>
-            </div>
-
-            <hr class="section-divider" />
-
-            <div class="section">
-                <h3>Explanation</h3>
-                <ul class="custom-list">
-                    <li>
-                        <strong>The <code>useParams</code> Hook</strong>: The
-                        <code>useParams</code> hook is used to access the
-                        dynamic parameters of the current route. In this case,
-                        <code>let { id } = useParams();</code> extracts the
-                        <code>id</code> parameter from the URL.
-                    </li>
-                    <li>
-                        <strong>Using Route Parameters</strong>: The extracted
-                        <code>id</code> parameter can be used to fetch or
-                        display specific details about an item. For example, in
-                        the <code>InventoryDetails</code> component, we display
-                        the <code>id</code> parameter directly in the UI. In a
-                        real application, you might use this <code>id</code> to
-                        fetch data from an API or a database.
-                    </li>
-                </ul>
-            </div>
-
-            <hr class="section-divider" />
-
-            <div class="section">
-                <h3>Conclusion</h3>
+            <section class="section" aria-labelledby="options">
+                <h3 id="options">
+                    Options: <code>replace</code> and <code>state</code>
+                </h3>
                 <p>
-                    The <code>useParams</code> hook in React Router DOM is a
-                    powerful tool for accessing dynamic route parameters in
-                    React applications. It allows developers to extract and use
-                    parameters from the URL, enabling the creation of more
-                    dynamic and responsive applications. By using
-                    <code>useParams</code>, you can easily fetch and display
-                    data based on the current route, enhancing the functionality
-                    of your SPAs.
+                    Replace the current history entry or pass transient state to
+                    the next route.
                 </p>
-            </div>
+                <pre><code class="language-jsx">// components/LoginForm.jsx
+import { useNavigate } from "react-router-dom";
 
-            <hr class="section-divider" />
+export default function LoginForm() {
+  const navigate = useNavigate();
 
-            <div class="section">
-                <h3>Additional Resources</h3>
-                <ul class="custom-list">
+  async function handleSubmit(e) {
+    e.preventDefault();
+    // ... authenticate user
+    navigate("/dashboard", {
+      replace: true,               // prevent back to login
+      state: { from: "login" }     // read via useLocation().state
+    });
+  }
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input name="email" /&gt;
+      &lt;input name="password" type="password" /&gt;
+      &lt;button&gt;Sign In&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+</code></pre>
+            </section>
+
+            <section class="section" aria-labelledby="tips">
+                <h3 id="tips">Tips</h3>
+                <ul>
                     <li>
-                        <a
-                            href="https://reactrouter.com/web/guides/quick-start"
-                            target="_blank"
-                            rel="noopener"
-                            >React Router DOM Documentation</a
-                        >
+                        Prefer <code>Link</code>/<code>NavLink</code> for
+                        static, visible navigation.
+                    </li>
+                    <li>
+                        Use <code>useNavigate</code> for imperative flows
+                        (wizards, success redirects).
+                    </li>
+                    <li>
+                        When redirecting after a mutation, consider
+                        <code>replace: true</code> to keep history clean.
                     </li>
                 </ul>
-            </div>
+            </section>
 
-            <footer class="slide-footer"></footer>
-        </div>
+            <footer class="slide-footer" aria-label="Footer"></footer>
+        </main>
+
+        <!-- Prism syntax highlighting (JS) -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+
+        <!-- Your app bundle (if any shared behaviors are needed) -->
+        <script src="../app.js"></script>
+
+        <!-- Lesson entry script -->
+        <script
+            src="https://vschool-reports.netlify.app/ltp.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L4-REACT_ROUTER-004"
+            data-lesson-title="useNavigate"
+            data-course-id="Web Development"></script>
+
+        <!-- Feedback script -->
+        <script
+            src="https://vschool-reports.netlify.app/feedback.js"
+            data-api="https://vschool-reports.netlify.app"
+            data-lesson-id="L4-REACT_ROUTER-004"
+            data-lesson-title="useNavigate"
+            data-course-id="Web Development"
+            data-button-selector="#myFeedbackBtn"></script>
     </body>
 </html>
