@@ -1,0 +1,227 @@
+[
+    {
+        "lessonId": "L4-WELCOME-001",
+        "title": "Welcome to Level 4",
+        "section": "Welcome",
+        "level": 4,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-WELCOME-002",
+        "title": "Capstone Project",
+        "section": "Welcome",
+        "level": 4,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-WELCOME-003",
+        "title": "Using React's Updated Render API",
+        "section": "Welcome",
+        "level": 4,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_CSS-001",
+        "title": "React Fragments",
+        "section": "React CSS",
+        "level": 4,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_CSS-002",
+        "title": "Code Reuse in React",
+        "section": "React CSS",
+        "level": 4,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_CSS-003",
+        "title": "React Children",
+        "section": "React CSS",
+        "level": 4,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_CSS-004",
+        "title": "React Children Practice - Assignment",
+        "section": "React CSS",
+        "level": 4,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_CSS-005",
+        "title": "CSS Gradient Generator - Assignment",
+        "section": "React CSS",
+        "level": 4,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-PORTFOLIO_&_SPEED_GAME-001",
+        "title": "Creating your Portfolio",
+        "section": "Portfolio & Speed Game",
+        "level": 4,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-PORTFOLIO_&_SPEED_GAME-002",
+        "title": "Speed Typing Game",
+        "section": "Portfolio & Speed Game",
+        "level": 4,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-CONTEXT-001",
+        "title": "Context Intro",
+        "section": "Context",
+        "level": 4,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-CONTEXT-002",
+        "title": "Context Provider",
+        "section": "Context",
+        "level": 4,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-CONTEXT-003",
+        "title": "Consuming Context (useContext)",
+        "section": "Context",
+        "level": 4,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-CONTEXT-004",
+        "title": "Changing Context",
+        "section": "Context",
+        "level": 4,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-CONTEXT-005",
+        "title": "Moving Context",
+        "section": "Context",
+        "level": 4,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-CONTEXT-006",
+        "title": "Changing Themes w/ Context - Assignment",
+        "section": "Context",
+        "level": 4,
+        "order": 6,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-CONTEXT-007",
+        "title": "Ugly Things - Assignment",
+        "section": "Context",
+        "level": 4,
+        "order": 7,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-MID_LEVEL-001",
+        "title": "Mid Level Skill Check",
+        "section": "Mid-Level",
+        "level": 4,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_ROUTER-001",
+        "title": "Intro to React Router",
+        "section": "React Router",
+        "level": 4,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_ROUTER-002",
+        "title": "Router Setup",
+        "section": "React Router",
+        "level": 4,
+        "order": 2,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_ROUTER-003",
+        "title": "Link",
+        "section": "React Router",
+        "level": 4,
+        "order": 3,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_ROUTER-004",
+        "title": "useNavigate",
+        "section": "React Router",
+        "level": 4,
+        "order": 4,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_ROUTER-005",
+        "title": "useParams",
+        "section": "React Router",
+        "level": 4,
+        "order": 5,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-REACT_ROUTER-006",
+        "title": "React Roto Router",
+        "section": "React Router",
+        "level": 4,
+        "order": 6,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    },
+    {
+        "lessonId": "L4-CAPSTONE-001",
+        "title": "React API Project - Capstone",
+        "section": "Capstone",
+        "level": 4,
+        "order": 1,
+        "storyPoints": 5,
+        "courseId": "Web Development"
+    }
+]
